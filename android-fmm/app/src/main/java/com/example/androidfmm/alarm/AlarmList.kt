@@ -12,6 +12,11 @@ import com.example.androidfmm.databinding.FragmentAlarmListBinding
 import kotlinx.android.synthetic.main.fragment_alarm_list.*
 
 class AlarmList : Fragment() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -19,17 +24,23 @@ class AlarmList : Fragment() {
     ): View? {
         val binding = DataBindingUtil.inflate<FragmentAlarmListBinding>(
             inflater, R.layout.fragment_alarm_list, container, false)
+        binding.alarmList = this
+        
+        return binding.root
+    }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        //Test method call
         val testList = generateTest(100)
 
         alarm_list_fragment.adapter = AlarmListAdapter(testList)
         alarm_list_fragment.layoutManager = LinearLayoutManager(requireContext())
         alarm_list_fragment.setHasFixedSize(true)
-
-        binding.alarmList = this
-        return binding.root
     }
 
+    // Test method
     private fun generateTest(size: Int): List<AlarmItem> {
         val list = ArrayList<AlarmItem>()
 
@@ -39,5 +50,9 @@ class AlarmList : Fragment() {
         }
 
         return list
+    }
+
+    companion object {
+        fun newInstance(): AlarmList = AlarmList()
     }
 }
