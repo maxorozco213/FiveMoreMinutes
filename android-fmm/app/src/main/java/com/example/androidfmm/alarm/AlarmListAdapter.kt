@@ -18,12 +18,12 @@ class AlarmListAdapter(private val alarmList: List<AlarmItem>): RecyclerView.Ada
 
     override fun onBindViewHolder(holder: AlarmViewHolder, position: Int) {
         val currentItem = alarmList[position]
-        holder.testTextHold.text = currentItem.testText1
+//        holder.testTextHold.text = currentItem.testText1
     }
 
     override fun getItemCount() = alarmList.size
 
     class AlarmViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val testTextHold: TextView = itemView.test_text
+//        val testTextHold: TextView = itemView.test_text
     }
 }
