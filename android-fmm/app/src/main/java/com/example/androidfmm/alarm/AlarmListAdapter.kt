@@ -24,6 +24,9 @@ class AlarmListAdapter(private val alarmList: List<AlarmItem>): RecyclerView.Ada
     override fun getItemCount() = alarmList.size
 
     class AlarmViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-//        val testTextHold: TextView = itemView.test_text
+        val alarmTimeView: TextView = itemView.alarmTime
+        val alarmDateView: TextView = itemView.alarmDate
+        val alarmWeekDayView: TextView = itemView.alarmWeekDay
+        
     }
 }
