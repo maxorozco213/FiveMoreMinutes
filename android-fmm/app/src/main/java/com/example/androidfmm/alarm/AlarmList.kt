@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidfmm.R
 import com.example.androidfmm.databinding.FragmentAlarmListBinding
 import kotlinx.android.synthetic.main.fragment_alarm_list.*
+import java.sql.Date
+import java.sql.Time
+import java.time.LocalDate
+import java.time.LocalTime
 
 class AlarmList : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,24 +37,26 @@ class AlarmList : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         //Test method call
-        val testList = generateTest(100)
+//        val testList = generateTest(100)
 
-        alarm_list_fragment.adapter = AlarmListAdapter(testList)
+        val alarmItemsList = listOf(AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"))
+
+        alarm_list_fragment.adapter = AlarmListAdapter(alarmItemsList)
         alarm_list_fragment.layoutManager = LinearLayoutManager(requireContext())
         alarm_list_fragment.setHasFixedSize(true)
     }
 
     // Test method
-    private fun generateTest(size: Int): List<AlarmItem> {
-        val list = ArrayList<AlarmItem>()
-
-        for (i in 0 until size) {
-            val item = AlarmItem(i.toString())
-            list += item
-        }
-
-        return list
-    }
+//    private fun generateTest(size: Int): List<AlarmItem> {
+//        val list = ArrayList<AlarmItem>()
+//
+//        for (i in 0 until size) {
+//            val item = AlarmItem(i.toString())
+//            list += item
+//        }
+//
+//        return list
+//    }
 
     companion object {
         fun newInstance(): AlarmList = AlarmList()
