@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/alarmListFragment2">
+
+    <fragment
+        android:id="@+id/alarmListFragment2"
+        android:name="com.example.androidfmm.alarm.AlarmListFragment"
+        android:label="fragment_alarm_list"
+        tools:layout="@layout/fragment_alarm_list" >
+        <action
+            android:id="@+id/action_alarmListFragment2_to_createAlarmFragment"
+            app:destination="@id/createAlarmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAlarmFragment"
+        android:name="com.example.androidfmm.createalarm.CreateAlarmFragment"
+        android:label="CreateAlarmFragment" >
+        <action
+            android:id="@+id/action_createAlarmFragment_to_alarmListFragment2"
+            app:destination="@id/alarmListFragment2" />
+    </fragment>
+</navigation>
