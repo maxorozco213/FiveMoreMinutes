@@ -1,4 +1,4 @@
-package com.example.androidfmm.alarm.data
+package com.example.androidfmm.data
 
 import androidx.room.TypeConverter
 import java.util.*

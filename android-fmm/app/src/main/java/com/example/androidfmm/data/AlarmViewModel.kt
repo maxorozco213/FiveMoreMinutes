@@ -1,4 +1,4 @@
-package com.example.androidfmm.alarm.data
+package com.example.androidfmm.data
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

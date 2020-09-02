@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".alarm.AlarmList">
+    tools:context=".alarm.AlarmListFragment">
 
     <data>
         <variable
             name="AlarmList"
-            type="com.example.androidfmm.alarm.AlarmList"
+            type="com.example.androidfmm.alarm.AlarmListFragment"
         />
     </data>
 

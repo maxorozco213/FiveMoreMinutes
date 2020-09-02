@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/alarmListFragment"
-            android:name="com.example.androidfmm.alarm.AlarmList"
+            android:name="com.example.androidfmm.alarm.AlarmListFragment"
             app:layoutManager='androidx.recyclerView.widget.LinearLayoutManager'
         />
 

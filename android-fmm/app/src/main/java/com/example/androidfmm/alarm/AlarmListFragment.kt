@@ -10,12 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidfmm.R
 import com.example.androidfmm.databinding.FragmentAlarmListBinding
 import kotlinx.android.synthetic.main.fragment_alarm_list.*
-import java.sql.Date
-import java.sql.Time
-import java.time.LocalDate
-import java.time.LocalTime
 
-class AlarmList : Fragment() {
+class AlarmListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
@@ -39,7 +35,17 @@ class AlarmList : Fragment() {
         //Test method call
 //        val testList = generateTest(100)
 
-        val alarmItemsList = listOf(AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"))
+        val alarmItemsList = listOf(
+            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
+            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
+            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
+            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
+            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
+            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
+            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
+            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
+            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20")
+        )
 
         alarm_list_fragment.adapter = AlarmListAdapter(alarmItemsList)
         alarm_list_fragment.layoutManager = LinearLayoutManager(requireContext())
@@ -59,6 +65,6 @@ class AlarmList : Fragment() {
 //    }
 
     companion object {
-        fun newInstance(): AlarmList = AlarmList()
+        fun newInstance(): AlarmListFragment = AlarmListFragment()
     }
 }
