@@ -33,11 +33,13 @@
                 android:layout_width="@dimen/default_elem_width"
                 android:layout_height="58dp"
                 android:layout_marginTop="50dp"
+                android:background="@drawable/alarm_name_text_input"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/alarmTimePicker"
-                app:layout_constraintVertical_bias="0.002">
+                app:layout_constraintVertical_bias="0.002"
+                app:cardCornerRadius="@dimen/rounded_corners">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/alarmName"
@@ -69,8 +71,25 @@
                 app:layout_constraintBottom_toTopOf="@+id/vibrationOptionsCard"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+                app:cardCornerRadius="@dimen/rounded_corners">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/alarm_name_text_input">
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/soundSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.951"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -82,7 +101,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/vibrationOptionsCard" />
+                app:layout_constraintTop_toBottomOf="@+id/vibrationOptionsCard"
+                app:cardCornerRadius="@dimen/rounded_corners"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/vibrationOptionsCard"
@@ -94,8 +114,23 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/soundOptionsCard"
-                app:layout_constraintVertical_bias="0.133">
+                app:layout_constraintVertical_bias="0.133"
+                app:cardCornerRadius="@dimen/rounded_corners">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent">
 
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/vibrationSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.951"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

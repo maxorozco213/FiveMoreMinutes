@@ -1,9 +1,11 @@
 package com.example.androidfmm.alarm
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidfmm.R
 import kotlinx.android.synthetic.main.alarm_list_item.view.*
@@ -12,6 +14,11 @@ class AlarmListAdapter(private val alarmList: List<AlarmItem>): RecyclerView.Ada
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlarmViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val itemView = layoutInflater.inflate(R.layout.alarm_list_item, parent, false)
+
+        itemView.setOnClickListener {view: View ->
+            view.findNavController().navigate(R.id.action_alarmListFragment_to_createAlarmFragment)
+            Log.i("CLICKED", "THE VIEW")
+        }
 
         return AlarmViewHolder(itemView)
     }

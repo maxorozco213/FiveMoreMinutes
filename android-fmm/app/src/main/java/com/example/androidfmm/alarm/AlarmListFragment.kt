@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -52,6 +53,10 @@ class AlarmListFragment : Fragment() {
         alarm_list_fragment.setHasFixedSize(true)
     }
 
+    fun goToAlarmCreate() {
+
+    }
+
     // Test method
 //    private fun generateTest(size: Int): List<AlarmItem> {
 //        val list = ArrayList<AlarmItem>()
@@ -63,8 +68,4 @@ class AlarmListFragment : Fragment() {
 //
 //        return list
 //    }
-
-    companion object {
-        fun newInstance(): AlarmListFragment = AlarmListFragment()
-    }
 }
