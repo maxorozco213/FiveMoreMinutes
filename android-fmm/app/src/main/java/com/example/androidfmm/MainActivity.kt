@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val toolbarView: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbarView)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.nav_create_new_alarm -> {
+            Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.createAlarmFragment)
             Log.i("MENU", "MENU NAV CLICKED")
             true
         }
