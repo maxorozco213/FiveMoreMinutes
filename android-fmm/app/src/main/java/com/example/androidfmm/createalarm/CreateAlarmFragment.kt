@@ -1,20 +1,22 @@
 package com.example.androidfmm.createalarm
 
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.*
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.androidfmm.R
 import com.example.androidfmm.alarm.AlarmItem
 import com.example.androidfmm.data.AlarmViewModel
 import com.example.androidfmm.databinding.FragmentCreateAlarmBinding
-import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_create_alarm.*
 
 class CreateAlarmFragment: Fragment() {
@@ -50,9 +52,7 @@ class CreateAlarmFragment: Fragment() {
             true
         }
         R.id.nav_host_fragment -> {
-            NavigationUI.onNavDestinationSelected(
-                item,
-            requireView().findNavController())
+            NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
                     || super.onOptionsItemSelected(item)
             true
         }
@@ -62,12 +62,19 @@ class CreateAlarmFragment: Fragment() {
         }
     }
 
+    private fun View.hideKeyboard() {
+        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(windowToken, 0)
+    }
+
     private fun insertNewAlarmToDatabase() {
         val alarmName = alarmName.text.toString()
 
         if (inputCheck(alarmName)) {
             val alarmItem = AlarmItem(0, alarmName)
             mAlarmViewModel.addAlarm(alarmItem)
+            Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.alarmListFragment)
+            view?.hideKeyboard()
             Toast.makeText(requireContext(), "New Alarm Group Created", Toast.LENGTH_LONG).show()
         } else {
             Toast.makeText(requireContext(), "There was an Error", Toast.LENGTH_LONG).show()
