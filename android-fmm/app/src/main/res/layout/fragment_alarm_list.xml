@@ -24,6 +24,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/alarm_list_item"
             android:id="@+id/alarm_list_fragment"
+
             android:clipToPadding="false"
         />
 

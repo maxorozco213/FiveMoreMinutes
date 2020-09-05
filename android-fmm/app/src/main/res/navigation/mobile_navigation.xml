@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/alarmListFragment"
         android:name="com.example.androidfmm.alarm.AlarmListFragment"
-        android:label="fragment_alarm_list"
-        tools:layout="@layout/fragment_alarm_list" >
+        android:label="Five More Minutes"
+        tools:layout="@layout/fragment_alarm_list">
         <action
             android:id="@+id/action_alarmListFragment_to_createAlarmFragment"
             app:destination="@id/createAlarmFragment"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/createAlarmFragment"
         android:name="com.example.androidfmm.createalarm.CreateAlarmFragment"
-        android:label="CreateAlarmFragment" >
+        android:label="Create New Alarms">
         <action
             android:id="@+id/action_createAlarmFragment_to_alarmListFragment"
             app:destination="@id/alarmListFragment"

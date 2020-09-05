@@ -8,33 +8,16 @@ import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var navView: NavigationView
-    private lateinit var toolbar: Toolbar
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val toolbarView: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbarView)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.actionbar_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-        R.id.nav_create_new_alarm -> {
-            Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.createAlarmFragment)
-            Log.i("MENU", "MENU NAV CLICKED")
-            true
-        }
-        else -> {
-            Log.i("MENU", "WAT")
-            super.onOptionsItemSelected(item)
-        }
+        setupActionBarWithNavController(findNavController(R.id.nav_host_fragment))
     }
 }

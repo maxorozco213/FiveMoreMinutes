@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/nav_create_new_alarm"
-        android:title="@string/new_alarm"
+        android:id="@+id/save_button"
+        android:title="@string/save_button_toolbar"
         app:showAsAction="always" />
 
 </menu>

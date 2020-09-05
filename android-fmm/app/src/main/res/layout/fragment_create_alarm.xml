@@ -49,19 +49,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/saveAlarmButton"
-                style="@android:style/Widget.Material.Button.Borderless.Small"
-                android:layout_width="85dp"
-                android:layout_height="36dp"
-                android:text="@string/save_button"
-                app:layout_constraintBottom_toTopOf="@+id/alarmTimePicker"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.981"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.333" />
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/soundOptionsCard"
                 android:layout_width="@dimen/default_elem_width"
