@@ -5,8 +5,11 @@ import android.util.Log
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.androidfmm.R
 import com.example.androidfmm.databinding.FragmentCreateAlarmBinding
+import com.google.android.material.navigation.NavigationView
 
 class CreateAlarmFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +37,13 @@ class CreateAlarmFragment: Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.save_button -> {
             Log.i("MENU", "SAVE BUTTON")
+            true
+        }
+        R.id.nav_host_fragment -> {
+            NavigationUI.onNavDestinationSelected(
+                item,
+            requireView().findNavController())
+                    || super.onOptionsItemSelected(item)
             true
         }
         else -> {
