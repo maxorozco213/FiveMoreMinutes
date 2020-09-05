@@ -8,9 +8,10 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "alarm_table")
 data class AlarmItem(
     @PrimaryKey(autoGenerate = true) val id: Int,
-    val dayOfWeek: String,
-    val alarmTime: String,
-    val alarmDate: String
+    val alarmName: String
+//    val dayOfWeek: String,
+//    val alarmTime: String,
+//    val alarmDate: String
 //    @ColumnInfo(name = "alarm_count") val alarmCount: Int,
 //    @ColumnInfo(name = "alarm_interval") val alarmInterval: Int,
 )

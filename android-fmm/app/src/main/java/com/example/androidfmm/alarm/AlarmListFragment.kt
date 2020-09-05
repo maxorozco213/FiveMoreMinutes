@@ -33,19 +33,10 @@ class AlarmListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val alarmItemsList = listOf(
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20")
-        )
-
-        alarm_list_fragment.adapter = AlarmListAdapter(alarmItemsList)
+//        val alarmItemsList = listOf(
+//        )
+//
+//        alarm_list_fragment.adapter = AlarmListAdapter(alarmItemsList)
         alarm_list_fragment.layoutManager = LinearLayoutManager(requireContext())
         alarm_list_fragment.setHasFixedSize(true)
     }
