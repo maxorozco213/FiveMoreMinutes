@@ -26,7 +26,7 @@
                 app:layout_constraintHorizontal_bias="0.555"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.123" />
+                app:layout_constraintVertical_bias="0.102" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
@@ -67,12 +67,12 @@
                 android:layout_width="@dimen/default_elem_width"
                 android:layout_height="75dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginBottom="7dp"
+                app:cardCornerRadius="@dimen/rounded_corners"
                 app:layout_constraintBottom_toTopOf="@+id/vibrationOptionsCard"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-                app:cardCornerRadius="@dimen/rounded_corners">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -96,29 +96,30 @@
                 android:id="@+id/intervalOptionsCard"
                 android:layout_width="@dimen/default_elem_width"
                 android:layout_height="75dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="7dp"
                 android:layout_marginBottom="76dp"
+                app:cardCornerRadius="@dimen/rounded_corners"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/vibrationOptionsCard"
-                app:cardCornerRadius="@dimen/rounded_corners"/>
+                app:layout_constraintTop_toBottomOf="@+id/vibrationOptionsCard" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/vibrationOptionsCard"
                 android:layout_width="@dimen/default_elem_width"
                 android:layout_height="75dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="7dp"
                 android:layout_marginBottom="6dp"
+                app:cardCornerRadius="@dimen/rounded_corners"
                 app:layout_constraintBottom_toTopOf="@+id/intervalOptionsCard"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/soundOptionsCard"
-                app:layout_constraintVertical_bias="0.133"
-                app:cardCornerRadius="@dimen/rounded_corners">
+                app:layout_constraintVertical_bias="0.133">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/vibrationSwitch"

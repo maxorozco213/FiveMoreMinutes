@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Five More Minutes!</string>
+    <string name="app_name">Five More Minutes</string>
     <string name="next_alarm_text">Next alarm</string>
     <string name="alarm_name_placeholder">Alarm Name</string>
     <string name="save_button">Save</string>
+    <string name="new_alarm">+</string>
 </resources>
