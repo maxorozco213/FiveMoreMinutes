@@ -16,5 +16,5 @@ interface AlarmDao {
     fun addAlarm(vararg alarm: AlarmItem)
 
     @Delete
-    fun delete(user: AlarmItem)
+    fun delete(alarm: AlarmItem)
 }

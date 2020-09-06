@@ -6,6 +6,9 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
+import android.widget.DatePicker
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -18,6 +21,10 @@ import com.example.androidfmm.alarm.AlarmItem
 import com.example.androidfmm.data.AlarmViewModel
 import com.example.androidfmm.databinding.FragmentCreateAlarmBinding
 import kotlinx.android.synthetic.main.fragment_create_alarm.*
+import kotlinx.android.synthetic.main.fragment_create_alarm.view.*
+import java.time.LocalDateTime
+import java.time.OffsetDateTime
+import java.time.ZoneOffset
 
 class CreateAlarmFragment: Fragment() {
     private lateinit var mAlarmViewModel: AlarmViewModel
@@ -68,10 +75,22 @@ class CreateAlarmFragment: Fragment() {
     }
 
     private fun insertNewAlarmToDatabase() {
-        val alarmName = alarmName.text.toString()
+        val alarmName = alarm_name.toString()
+        val alarmCount = alarm_count.value.toInt()
+        val alarmInterval = alarm_interval.value.toInt()
+//        val alarmDateTimeView: OffsetDateTime = OffsetDateTime.of(
+//            LocalDateTime.of(
+//                year = alarm_date,
+//                month = alarm_date,
+//                dayOfMonth = alarm_date,
+//                hour = alarm_time_picker.hour,
+//                minute = alarm_time_picker.minute,
+//            ),
+//            ZoneOffset.ofHoursMinutes(6, 30)
+//        )
 
         if (inputCheck(alarmName)) {
-            val alarmItem = AlarmItem(0, alarmName)
+            val alarmItem = AlarmItem(0, alarmName, alarmCount, alarmInterval)
             mAlarmViewModel.addAlarm(alarmItem)
             Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.alarmListFragment)
             view?.hideKeyboard()

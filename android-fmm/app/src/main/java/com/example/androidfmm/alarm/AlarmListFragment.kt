@@ -9,10 +9,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidfmm.R
+import com.example.androidfmm.data.AlarmViewModel
 import com.example.androidfmm.databinding.FragmentAlarmListBinding
 import kotlinx.android.synthetic.main.fragment_alarm_list.*
 
 class AlarmListFragment : Fragment() {
+    private lateinit var mAlarmViewModel: AlarmViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
