@@ -14,8 +14,7 @@
             android:id="@+id/action_alarmListFragment_to_createAlarmFragment"
             app:destination="@id/createAlarmFragment"
             app:enterAnim="@anim/fragment_fade_enter"
-            app:exitAnim="@anim/fragment_fade_exit"
-            app:popUpTo="@id/alarmListFragment" />
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/createAlarmFragment"
@@ -25,7 +24,6 @@
             android:id="@+id/action_createAlarmFragment_to_alarmListFragment"
             app:destination="@id/alarmListFragment"
             app:enterAnim="@anim/fragment_fade_enter"
-            app:exitAnim="@anim/fragment_fade_exit"
-            app:popUpTo="@id/alarmListFragment" />
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
 </navigation>

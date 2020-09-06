@@ -9,10 +9,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidfmm.R
+import com.example.androidfmm.data.AlarmViewModel
 import com.example.androidfmm.databinding.FragmentAlarmListBinding
 import kotlinx.android.synthetic.main.fragment_alarm_list.*
 
 class AlarmListFragment : Fragment() {
+    private lateinit var mAlarmViewModel: AlarmViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -33,19 +36,10 @@ class AlarmListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val alarmItemsList = listOf(
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20"),
-            AlarmItem(0, dayOfWeek = "Monday", alarmTime = "12:00PM", alarmDate = "8/31/20")
-        )
-
-        alarm_list_fragment.adapter = AlarmListAdapter(alarmItemsList)
+//        val alarmItemsList = listOf(
+//        )
+//
+//        alarm_list_fragment.adapter = AlarmListAdapter(alarmItemsList)
         alarm_list_fragment.layoutManager = LinearLayoutManager(requireContext())
         alarm_list_fragment.setHasFixedSize(true)
     }

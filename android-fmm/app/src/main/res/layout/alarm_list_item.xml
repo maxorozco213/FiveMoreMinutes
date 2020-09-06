@@ -34,7 +34,7 @@
             app:layout_constraintVertical_bias="0.200" />
 
         <TextView
-            android:id="@+id/alarmDate"
+            android:id="@+id/alarm_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -53,7 +53,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginBottom="3dp"
             android:textColor="@color/defaultTextColor"
-            app:layout_constraintBottom_toTopOf="@+id/alarmDate"
+            app:layout_constraintBottom_toTopOf="@+id/alarm_date"
             app:layout_constraintEnd_toStartOf="@+id/alarmSwitch"
             app:layout_constraintHorizontal_bias="0.111"
             app:layout_constraintStart_toStartOf="parent"

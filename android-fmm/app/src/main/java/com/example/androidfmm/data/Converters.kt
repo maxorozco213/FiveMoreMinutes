@@ -1,16 +1,23 @@
 package com.example.androidfmm.data
 
 import androidx.room.TypeConverter
-import java.util.*
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
 
-class Converters {
+object Converters {
+    private val formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
+
     @TypeConverter
-    fun fromDateToLong(value: Long?): Date? {
-        return value?.let {Date(it)}
+    @JvmStatic
+    fun fromDateToString(value: String?): OffsetDateTime? {
+        return value?.let {
+            return formatter.parse(value, OffsetDateTime::from)
+        }
     }
 
     @TypeConverter
-    fun fromLongToDate(date: Date?): Long? {
-        return date?.time?.toLong()
+    @JvmStatic
+    fun fromLongToDate(dateTime: OffsetDateTime?): String? {
+        return dateTime?.format(formatter)
     }
 }
