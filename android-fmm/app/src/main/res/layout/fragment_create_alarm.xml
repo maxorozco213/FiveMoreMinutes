@@ -26,7 +26,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.063" />
+                app:layout_constraintVertical_bias="0.044" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
@@ -155,32 +155,35 @@
 
             <TextView
                 android:id="@+id/alarm_date"
-                android:layout_width="250dp"
+                android:layout_width="180sp"
                 android:layout_height="39dp"
-                android:layout_marginTop="19dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="27dp"
                 android:autofillHints="MM/DD/YYYY"
                 android:ems="10"
+                android:textColor="@color/defaultTextColor"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.084"
+                app:layout_constraintHorizontal_bias="0.265"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/alarm_time_picker"
-                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintVertical_bias="0.0"
                 tools:ignore="LabelFor" />
 
             <Button
                 android:id="@+id/open_date_picker"
                 android:layout_width="86dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="27dp"
                 android:text="Cal"
                 app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.625"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/alarm_date"
-                app:layout_constraintTop_toBottomOf="@+id/alarm_time_picker" />
+                app:layout_constraintTop_toBottomOf="@+id/alarm_time_picker"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

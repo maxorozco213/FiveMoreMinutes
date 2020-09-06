@@ -10,7 +10,7 @@ import java.time.OffsetDateTime
 data class AlarmItem(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val alarmName: String,
-//    val alarmDateTime: OffsetDateTime,
+    val alarmDateTime: OffsetDateTime,
     val alarmCount: Int,
     val alarmInterval: Int
 )
