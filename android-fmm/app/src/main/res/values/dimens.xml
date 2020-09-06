@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="defaultTextSize">20sp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="default_elem_width">375dp</dimen>
+    <dimen name="rounded_corners">8dp</dimen>
+</resources>
