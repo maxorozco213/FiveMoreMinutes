@@ -6,5 +6,11 @@
     <string name="new_alarm">+</string>
     <string name="save_button_toolbar">Save</string>
     <string name="settings">Settings</string>
-    <string name="enable_dark_theme">Enable Dark Theme</string>
+    <string name="enable_dark_theme">Dark Theme</string>
+    <string name="open_calendar_desc">Open calendar button</string>
+    <string name="about_header_settings">About</string>
+    <string name="defaults_header_settings">Defaults</string>
+    <string name="donation_header_settings">Donate</string>
+    <string name="theme_header_settings">Theme</string>
+    <string name="settings_main_header">Settings</string>
 </resources>

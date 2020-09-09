@@ -36,7 +36,7 @@
     <fragment
         android:id="@+id/settings_menu"
         android:name="com.example.androidfmm.settings.SettingsMenu"
-        android:label="Create New Alarms">
+        android:label="Settings">
         <action
             android:id="@+id/action_alarmListFragment_to_settingsMenuFragment"
             app:destination="@id/alarmListFragment"
