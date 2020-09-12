@@ -31,11 +31,11 @@ import kotlin.properties.Delegates
 class CreateAlarmFragment: Fragment() {
     private lateinit var mAlarmViewModel: AlarmViewModel
 
-    // Allows variables to be access from anywhere in the application
-    companion object {
-        val alarmYearFromObject = 0
-        val alarmMonthFromObject = 0
-        val alarmDayFromObject = 0
+    // Allows variables to be access from anywhere in this fragment (Since it's private)
+    private companion object {
+        var alarmYearFromObject = 0
+        var alarmMonthFromObject = 0
+        var alarmDayFromObject = 0
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,11 +54,12 @@ class CreateAlarmFragment: Fragment() {
 
         mAlarmViewModel = ViewModelProvider(this).get(AlarmViewModel::class.java)
 
-        val openDatePicker: Button = binding.openDatePicker
+        val openDatePicker: ImageButton = binding.openDatePicker
         val datePickerText: TextView = binding.alarmDate
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
+        // Month is returned as an ??index?? so 1 needs to be added to get the correct month number value
+        val month = calendar.get(Calendar.MONTH)+1
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
         // Set an initial date (current date on opening the app)
@@ -69,11 +70,20 @@ class CreateAlarmFragment: Fragment() {
             val datePickerDialog = DatePickerDialog(requireContext(), {
                 _, mYear, mMonth, mDay -> datePickerText.text = LocalDate.of(mYear, mMonth, mDay)
                     .format(DateTimeFormatter.ofPattern("MM/dd/yyyy")).toString()
+
+                // Set values to the global objects
+                alarmYearFromObject = mYear
+                alarmMonthFromObject = mMonth
+                alarmDayFromObject = mDay
+
+                // Log the change
+                Log.i("DATELOG",
+                    ("year $alarmYearFromObject month $alarmMonthFromObject day $alarmDayFromObject").toString()
+                )
             }, year, month, day)
 
             datePickerDialog.show()
         }
-
 
         return binding.root
     }
@@ -83,6 +93,7 @@ class CreateAlarmFragment: Fragment() {
         super.onCreateOptionsMenu(menu, menuInflater)
     }
 
+    // Determines the ID of the option that was clicked
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.save_button -> {
             insertNewAlarmToDatabase()
@@ -100,6 +111,7 @@ class CreateAlarmFragment: Fragment() {
         }
     }
 
+    // Called after insert to database
     private fun View.hideKeyboard() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
@@ -109,6 +121,7 @@ class CreateAlarmFragment: Fragment() {
         val alarmName = alarm_name.toString()
         val alarmCount = alarm_count.value.toInt()
         val alarmInterval = alarm_interval.value.toInt()
+        // Creates the alarm DateTime object
         val alarmDateTimeView = OffsetDateTime.of(
             LocalDateTime.of(
                 alarmYearFromObject,

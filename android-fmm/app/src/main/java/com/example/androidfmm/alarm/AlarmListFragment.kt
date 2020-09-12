@@ -55,6 +55,10 @@ class AlarmListFragment : Fragment() {
             Log.i("MENU", "MENU NAV CLICKED")
             true
         }
+        R.id.nav_settings -> {
+            Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.settings_menu)
+            true
+        }
         else -> {
             Log.i("MENU", "WAT")
             super.onOptionsItemSelected(item)

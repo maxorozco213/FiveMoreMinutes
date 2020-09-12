@@ -15,6 +15,13 @@
             app:destination="@id/createAlarmFragment"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_alarmListFragment_to_settings_menu"
+            app:destination="@id/settings_menu"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/createAlarmFragment"
@@ -22,6 +29,16 @@
         android:label="Create New Alarms">
         <action
             android:id="@+id/action_createAlarmFragment_to_alarmListFragment"
+            app:destination="@id/alarmListFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/settings_menu"
+        android:name="com.example.androidfmm.settings.SettingsMenu"
+        android:label="Settings">
+        <action
+            android:id="@+id/action_alarmListFragment_to_settingsMenuFragment"
             app:destination="@id/alarmListFragment"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
