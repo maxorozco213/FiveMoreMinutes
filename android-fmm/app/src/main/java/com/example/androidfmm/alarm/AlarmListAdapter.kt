@@ -17,7 +17,12 @@ import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
 
-class AlarmListAdapter(private val alarmList: List<AlarmItem>): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>() {
+class AlarmListAdapter(): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>() {
+
+    private var alarmList = emptyList<AlarmItem>()
+
+    class AlarmViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {}
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlarmViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val itemView = layoutInflater.inflate(R.layout.alarm_list_item, parent, false)
@@ -32,16 +37,24 @@ class AlarmListAdapter(private val alarmList: List<AlarmItem>): RecyclerView.Ada
 
     override fun onBindViewHolder(holder: AlarmViewHolder, position: Int) {
         val currentItem = alarmList[position]
-        holder.alarmNameView.text = currentItem.alarmName
+        holder.itemView.alarmTime.text = currentItem.alarmName.toString()
+//        holder.alarmCountView.value = currentItem.alarmCount
+//        holder.alarmIntervalView.value = currentItem.alarmInterval
 //        holder.alarmDateTimeView.toString() = currentItem.alarmDateTime
-        holder.alarmCountView.value = currentItem.alarmCount
-        holder.alarmIntervalView.value = currentItem.alarmInterval
     }
 
     override fun getItemCount() = alarmList.size
 
-    class AlarmViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val alarmNameView: TextView = itemView.alarm_name
+    fun setData(alarm: List<AlarmItem>) {
+        this.alarmList = alarm
+        notifyDataSetChanged()
+    }
+
+//    class AlarmViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+//        val alarmNameView: TextView = itemView.alarm_name
+//        val alarmCountView: NumberPicker = itemView.alarm_count
+//        val alarmIntervalView: NumberPicker = itemView.alarm_interval
+
 //        val alarmDateTimeView: OffsetDateTime = OffsetDateTime.of(
 //            LocalDateTime.of(
 //                year = itemView.alarmTimePicker.,
@@ -52,8 +65,6 @@ class AlarmListAdapter(private val alarmList: List<AlarmItem>): RecyclerView.Ada
 //            ),
 //            ZoneOffset.ofHoursMinutes(6, 30)
 //        )
-        val alarmCountView: NumberPicker = itemView.alarm_count
-        val alarmIntervalView: NumberPicker = itemView.alarm_interval
 
-    }
+//    }
 }

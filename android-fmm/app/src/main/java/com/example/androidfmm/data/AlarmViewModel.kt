@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AlarmViewModel(application: Application): AndroidViewModel(application){
-    private val readAllData: LiveData<List<AlarmItem>>
+    val readAllData: LiveData<List<AlarmItem>>
     private val repository: AlarmRepository
 
     init {

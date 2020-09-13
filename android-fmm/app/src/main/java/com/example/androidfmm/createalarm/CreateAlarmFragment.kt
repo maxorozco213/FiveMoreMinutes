@@ -62,6 +62,9 @@ class CreateAlarmFragment: Fragment() {
         val month = calendar.get(Calendar.MONTH)+1
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
+        alarmMonthFromObject = month-1
+        alarmMonthFromObject = month
+        alarmDayFromObject = day
         // Set an initial date (current date on opening the app)
         datePickerText.text = LocalDate.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")).toString()
 
@@ -118,14 +121,14 @@ class CreateAlarmFragment: Fragment() {
     }
 
     private fun insertNewAlarmToDatabase() {
-        val alarmName = alarm_name.toString()
-        val alarmCount = alarm_count.value.toInt()
-        val alarmInterval = alarm_interval.value.toInt()
+        val alarmName = alarm_name.text.toString()
+        val alarmCount = alarm_count.value
+        val alarmInterval = alarm_interval.value
         // Creates the alarm DateTime object
         val alarmDateTimeView = OffsetDateTime.of(
             LocalDateTime.of(
                 alarmYearFromObject,
-                alarmMonthFromObject,
+                alarmMonthFromObject-1,
                 alarmDayFromObject,
                 alarm_time_picker.hour,
                 alarm_time_picker.minute
