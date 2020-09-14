@@ -39,9 +39,15 @@ class AlarmListAdapter(): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>
     override fun onBindViewHolder(holder: AlarmViewHolder, position: Int) {
         val currentItem = alarmList[position]
         holder.itemView.alarm_name.text = currentItem.alarmName
+        // Get main time display for list items
         holder.itemView.alarm_time.text = currentItem.alarmDateTime.toLocalTime()
-            .format(DateTimeFormatter.ofPattern("hh:mm"))
-            .toString()
+            .format(DateTimeFormatter.ofPattern("h:mm")).toString()
+        // Get the schedule of the alarm - Can be a single date or multiple days in a week repeating each week
+        holder.itemView.alarm_schedule.text = currentItem.alarmDateTime.toLocalDate()
+            .plusYears(2020).plusMonths(1)
+            .format(DateTimeFormatter.ofPattern("M/dd/yy")).toString()
+        // Get the interval, will also need the total count
+        holder.itemView.alarm_interval.text = currentItem.alarmInterval.toString()
     }
 
     override fun getItemCount() = alarmList.size

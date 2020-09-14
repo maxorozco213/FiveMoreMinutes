@@ -123,7 +123,7 @@ class CreateAlarmFragment: Fragment() {
     private fun insertNewAlarmToDatabase() {
         val alarmName = alarm_name_input.text.toString()
         val alarmCount = alarm_count.value
-        val alarmInterval = alarm_interval.value
+        val alarmInterval = alarm_interval_input.value
         // Creates the alarm DateTime object
         val alarmDateTimeView = OffsetDateTime.of(
             LocalDateTime.of(
@@ -138,16 +138,22 @@ class CreateAlarmFragment: Fragment() {
 
         if (inputCheck(alarmName)) {
             val alarmItem = AlarmItem(0, alarmName, alarmDateTimeView, alarmCount, alarmInterval)
+
             mAlarmViewModel.addAlarm(alarmItem)
             Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.alarmListFragment)
             view?.hideKeyboard()
             Toast.makeText(requireContext(), "New Alarm Group Created", Toast.LENGTH_LONG).show()
+        } else if (!inputCheck(alarmName)) {
+            Toast.makeText(requireContext(), "20 character limit for alarm name", Toast.LENGTH_LONG).show()
         } else {
-            Toast.makeText(requireContext(), "There was an Error", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "There was an error creating the alarm", Toast.LENGTH_LONG).show()
         }
     }
 
     private fun inputCheck(alarmName: String): Boolean {
-        return !(TextUtils.isEmpty(alarmName))
+        if (alarmName.length > 20) {
+            return false
+        }
+        return true
     }
 }
