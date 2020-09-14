@@ -121,7 +121,7 @@ class CreateAlarmFragment: Fragment() {
     }
 
     private fun insertNewAlarmToDatabase() {
-        val alarmName = alarm_name.text.toString()
+        val alarmName = alarm_name_input.text.toString()
         val alarmCount = alarm_count.value
         val alarmInterval = alarm_interval.value
         // Creates the alarm DateTime object

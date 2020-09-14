@@ -16,6 +16,7 @@ import org.w3c.dom.Text
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 
 class AlarmListAdapter(): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>() {
 
@@ -37,10 +38,10 @@ class AlarmListAdapter(): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>
 
     override fun onBindViewHolder(holder: AlarmViewHolder, position: Int) {
         val currentItem = alarmList[position]
-        holder.itemView.alarmTime.text = currentItem.alarmName.toString()
-//        holder.alarmCountView.value = currentItem.alarmCount
-//        holder.alarmIntervalView.value = currentItem.alarmInterval
-//        holder.alarmDateTimeView.toString() = currentItem.alarmDateTime
+        holder.itemView.alarm_name.text = currentItem.alarmName
+        holder.itemView.alarm_time.text = currentItem.alarmDateTime.toLocalTime()
+            .format(DateTimeFormatter.ofPattern("hh:mm"))
+            .toString()
     }
 
     override fun getItemCount() = alarmList.size
@@ -49,22 +50,4 @@ class AlarmListAdapter(): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>
         this.alarmList = alarm
         notifyDataSetChanged()
     }
-
-//    class AlarmViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-//        val alarmNameView: TextView = itemView.alarm_name
-//        val alarmCountView: NumberPicker = itemView.alarm_count
-//        val alarmIntervalView: NumberPicker = itemView.alarm_interval
-
-//        val alarmDateTimeView: OffsetDateTime = OffsetDateTime.of(
-//            LocalDateTime.of(
-//                year = itemView.alarmTimePicker.,
-//                month = month,
-//                dayOfMonth = dayOfMonth,
-//                hour = itemView.alarmTimePicker.hour,
-//                minute = itemView.alarmTimePicker.minute,
-//            ),
-//            ZoneOffset.ofHoursMinutes(6, 30)
-//        )
-
-//    }
 }
