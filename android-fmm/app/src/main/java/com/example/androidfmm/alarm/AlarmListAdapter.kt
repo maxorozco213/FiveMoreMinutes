@@ -1,5 +1,6 @@
 package com.example.androidfmm.alarm
 
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import java.time.OffsetDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
+// Adapter for the alarm item, gives data to the UI
 class AlarmListAdapter(): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>() {
 
     private var alarmList = emptyList<AlarmItem>()
@@ -38,6 +40,7 @@ class AlarmListAdapter(): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>
 
     override fun onBindViewHolder(holder: AlarmViewHolder, position: Int) {
         val currentItem = alarmList[position]
+        val interval = currentItem.alarmInterval.toString()
         holder.itemView.alarm_name.text = currentItem.alarmName
         // Get main time display for list items
         holder.itemView.alarm_time.text = currentItem.alarmDateTime.toLocalTime()
@@ -45,9 +48,9 @@ class AlarmListAdapter(): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>
         // Get the schedule of the alarm - Can be a single date or multiple days in a week repeating each week
         holder.itemView.alarm_schedule.text = currentItem.alarmDateTime.toLocalDate()
             .plusYears(2020).plusMonths(1)
-            .format(DateTimeFormatter.ofPattern("M/dd/yy")).toString()
+            .format(DateTimeFormatter.ofPattern("M/d/yy")).toString()
         // Get the interval, will also need the total count
-        holder.itemView.alarm_interval.text = currentItem.alarmInterval.toString()
+        holder.itemView.alarm_interval.text = if (interval != "0") interval else "Single alarm"
     }
 
     override fun getItemCount() = alarmList.size
