@@ -1,15 +1,18 @@
 package com.example.androidfmm.alarm
 
 import android.os.Bundle
+import android.text.Layout
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.NumberPicker
 import android.widget.TextView
+import androidx.fragment.app.ListFragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidfmm.R
+import com.example.androidfmm.createalarm.UpdateAlarmFragment
 import com.example.androidfmm.data.AlarmViewModel
 import kotlinx.android.synthetic.main.alarm_list_item.view.*
 import kotlinx.android.synthetic.main.fragment_create_alarm.view.*
@@ -30,10 +33,10 @@ class AlarmListAdapter(): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>
         val layoutInflater = LayoutInflater.from(parent.context)
         val itemView = layoutInflater.inflate(R.layout.alarm_list_item, parent, false)
 
-        itemView.setOnClickListener {view: View ->
-            view.findNavController().navigate(R.id.action_alarmListFragment_to_createAlarmFragment)
-            Log.i("CLICKED", "THE VIEW")
-        }
+//        itemView.setOnClickListener {view: View ->
+//            view.findNavController().navigate(R.id.action_alarmListFragment_to_updateAlarmFragment)
+//            Log.i("CLICKED", "THE VIEW")
+//        }
 
         return AlarmViewHolder(itemView)
     }
@@ -51,6 +54,12 @@ class AlarmListAdapter(): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>
             .format(DateTimeFormatter.ofPattern("M/d/yy")).toString()
         // Get the interval, will also need the total count
         holder.itemView.alarm_interval.text = if (interval != "0") interval else "Single alarm"
+
+        // Navigate and send alarm object to Update Fragment
+        holder.itemView.alarm_list_item.setOnClickListener {
+            val action = AlarmListFragmentDirections.actionAlarmListFragmentToUpdateAlarmFragment(currentItem)
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount() = alarmList.size

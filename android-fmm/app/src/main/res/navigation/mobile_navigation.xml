@@ -22,6 +22,9 @@
             app:exitAnim="@anim/fragment_fade_exit"
             app:popEnterAnim="@anim/fragment_fade_enter"
             app:popExitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_alarmListFragment_to_updateAlarmFragment"
+            app:destination="@id/updateAlarmFragment" />
     </fragment>
     <fragment
         android:id="@+id/createAlarmFragment"
@@ -42,5 +45,16 @@
             app:destination="@id/alarmListFragment"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateAlarmFragment"
+        android:name="com.example.androidfmm.createalarm.UpdateAlarmFragment"
+        android:label="Edit Alarm" >
+        <action
+            android:id="@+id/action_updateAlarmFragment_to_alarmListFragment"
+            app:destination="@id/alarmListFragment" />
+        <argument
+            android:name="currentAlarm"
+            app:argType="com.example.androidfmm.alarm.AlarmItem" />
     </fragment>
 </navigation>

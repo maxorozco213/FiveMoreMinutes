@@ -6,7 +6,8 @@
     android:layout_height="130dp"
     android:layout_margin="4dp"
     android:background="?attr/selectableItemBackground"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="10dp"
+    android:id="@+id/alarm_list_item">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

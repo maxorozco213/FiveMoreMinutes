@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="UpdateAlarm"
+            type="com.example.androidfmm.createalarm.UpdateAlarmFragment" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TimePicker
+                android:id="@+id/alarm_time_picker"
+                android:layout_width="@dimen/default_elem_width"
+                android:layout_height="214dp"
+                android:timePickerMode="spinner"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.051" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="@dimen/default_elem_width"
+                android:layout_height="58dp"
+                android:layout_marginTop="90dp"
+                android:background="@drawable/alarm_name_text_input"
+                app:cardCornerRadius="@dimen/rounded_corners"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/alarm_time_picker"
+                app:layout_constraintVertical_bias="0.002">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/alarm_name_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/alarm_name_placeholder" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/soundOptionsCard"
+                android:layout_width="@dimen/default_elem_width"
+                android:layout_height="75dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="@dimen/rounded_corners"
+                app:layout_constraintBottom_toTopOf="@+id/vibrationOptionsCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/alarm_name_text_input">
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/soundSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.951"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/intervalOptionsCard"
+                android:layout_width="@dimen/default_elem_width"
+                android:layout_height="75dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="76dp"
+                app:cardCornerRadius="@dimen/rounded_corners"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vibrationOptionsCard">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/alarm_name_text_input">
+
+                    <NumberPicker
+                        android:id="@+id/alarm_interval_input"
+                        android:layout_width="54dp"
+                        android:layout_height="63dp"
+                        android:layout_marginEnd="24dp"
+                        android:ems="10"
+                        android:inputType="number"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/alarm_count"
+                        app:layout_constraintHorizontal_bias="0.847"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.583" />
+
+                    <NumberPicker
+                        android:id="@+id/alarm_count"
+                        android:layout_width="54dp"
+                        android:layout_height="63dp"
+                        android:ems="10"
+                        android:inputType="number"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/vibrationOptionsCard"
+                android:layout_width="@dimen/default_elem_width"
+                android:layout_height="75dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="@dimen/rounded_corners"
+                app:layout_constraintBottom_toTopOf="@+id/intervalOptionsCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/soundOptionsCard"
+                app:layout_constraintVertical_bias="0.133">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/vibrationSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.95"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/alarm_date"
+                android:layout_width="150sp"
+                android:layout_height="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="27dp"
+                android:autofillHints="MM/DD/YYYY"
+                android:ems="10"
+                android:textColor="@color/defaultTextColor"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.398"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/alarm_time_picker"
+                app:layout_constraintVertical_bias="0.888"
+                tools:ignore="LabelFor" />
+
+            <ImageButton
+                android:id="@+id/open_date_picker"
+                android:layout_width="50dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="27dp"
+                android:background="#00FFFFFF"
+                android:src="@drawable/ic_baseline_calendar_today_24"
+                app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/alarm_date"
+                app:layout_constraintTop_toBottomOf="@+id/alarm_time_picker"
+                app:layout_constraintVertical_bias="0.785"
+                android:contentDescription="@string/open_calendar_desc" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

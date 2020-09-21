@@ -44,7 +44,6 @@ class AlarmListFragment : Fragment() {
         })
 
         return view
-//        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -52,8 +51,8 @@ class AlarmListFragment : Fragment() {
 
 //        val alarmItemsList = listOf(
 //        )
-//
 //        alarm_list_fragment.adapter = AlarmListAdapter(alarmItemsList)
+
         alarm_list_fragment.layoutManager = LinearLayoutManager(requireContext())
         alarm_list_fragment.setHasFixedSize(true)
     }
