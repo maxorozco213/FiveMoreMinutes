@@ -18,7 +18,7 @@
             android:layout_height="wrap_content">
 
             <TimePicker
-                android:id="@+id/alarm_time_picker"
+                android:id="@+id/update_alarm_time_picker"
                 android:layout_width="@dimen/default_elem_width"
                 android:layout_height="214dp"
                 android:timePickerMode="spinner"
@@ -38,11 +38,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/alarm_time_picker"
+                app:layout_constraintTop_toBottomOf="@+id/update_alarm_time_picker"
                 app:layout_constraintVertical_bias="0.002">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/alarm_name_input"
+                    android:id="@+id/update_alarm_name_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/alarm_name_placeholder" />
@@ -67,7 +67,7 @@
                     android:background="@drawable/alarm_name_text_input">
 
                     <androidx.appcompat.widget.SwitchCompat
-                        android:id="@+id/soundSwitch"
+                        android:id="@+id/update_sound_switch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,21 +97,21 @@
                     android:background="@drawable/alarm_name_text_input">
 
                     <NumberPicker
-                        android:id="@+id/alarm_interval_input"
+                        android:id="@+id/update_alarm_interval_input"
                         android:layout_width="54dp"
                         android:layout_height="63dp"
                         android:layout_marginEnd="24dp"
                         android:ems="10"
                         android:inputType="number"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/alarm_count"
+                        app:layout_constraintEnd_toStartOf="@+id/update_alarm_count"
                         app:layout_constraintHorizontal_bias="0.847"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.583" />
 
                     <NumberPicker
-                        android:id="@+id/alarm_count"
+                        android:id="@+id/update_alarm_count"
                         android:layout_width="54dp"
                         android:layout_height="63dp"
                         android:ems="10"
@@ -154,7 +154,7 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/alarm_date"
+                android:id="@+id/update_alarm_date"
                 android:layout_width="150sp"
                 android:layout_height="36dp"
                 android:layout_marginTop="10dp"
@@ -167,7 +167,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.398"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/alarm_time_picker"
+                app:layout_constraintTop_toBottomOf="@+id/update_alarm_time_picker"
                 app:layout_constraintVertical_bias="0.888"
                 tools:ignore="LabelFor" />
 
@@ -182,8 +182,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/alarm_date"
-                app:layout_constraintTop_toBottomOf="@+id/alarm_time_picker"
+                app:layout_constraintStart_toEndOf="@+id/update_alarm_date"
+                app:layout_constraintTop_toBottomOf="@+id/update_alarm_time_picker"
                 app:layout_constraintVertical_bias="0.785"
                 android:contentDescription="@string/open_calendar_desc" />
 

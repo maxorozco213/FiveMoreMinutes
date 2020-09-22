@@ -57,6 +57,7 @@ class CreateAlarmFragment: Fragment() {
         val openDatePicker: ImageButton = binding.openDatePicker
         val datePickerText: TextView = binding.alarmDate
         val calendar = Calendar.getInstance()
+
         val year = calendar.get(Calendar.YEAR)
         // Month is returned as an ??index?? so 1 needs to be added to get the correct month number value
         val month = calendar.get(Calendar.MONTH)+1
@@ -65,6 +66,7 @@ class CreateAlarmFragment: Fragment() {
         alarmMonthFromObject = month-1
         alarmMonthFromObject = month
         alarmDayFromObject = day
+
         // Set an initial date (current date on opening the app)
         datePickerText.text = LocalDate.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")).toString()
 

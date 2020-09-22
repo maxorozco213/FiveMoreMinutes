@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import com.example.androidfmm.R
 import com.example.androidfmm.alarm.AlarmItem
@@ -27,6 +28,8 @@ import java.util.*
 
 class UpdateAlarmFragment: Fragment() {
     private lateinit var mAlarmViewModel: AlarmViewModel
+    // See app:gradle lines 33-40
+    private val args by navArgs<UpdateAlarmFragmentArgs>()
 
     // Allows variables to be access from anywhere in this fragment (Since it's private)
     private companion object {
@@ -52,8 +55,9 @@ class UpdateAlarmFragment: Fragment() {
         mAlarmViewModel = ViewModelProvider(this).get(AlarmViewModel::class.java)
 
         val openDatePicker: ImageButton = binding.openDatePicker
-        val datePickerText: TextView = binding.alarmDate
+        val datePickerText: TextView = binding.updateAlarmDate
         val calendar = Calendar.getInstance()
+
         val year = calendar.get(Calendar.YEAR)
         // Month is returned as an ??index?? so 1 needs to be added to get the correct month number value
         val month = calendar.get(Calendar.MONTH)+1
@@ -62,8 +66,12 @@ class UpdateAlarmFragment: Fragment() {
         alarmMonthFromObject = month-1
         alarmMonthFromObject = month
         alarmDayFromObject = day
-        // Set an initial date (current date on opening the app)
-        datePickerText.text = LocalDate.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")).toString()
+
+        // Set an initial date to the selected alarm item's current date
+        val currentDate = args.currentAlarm.alarmDateTime.toLocalDate()
+            .plusMonths(1).plusYears(2020)
+            .format(DateTimeFormatter.ofPattern("M/dd/yyyy"))
+        datePickerText.text = currentDate.toString()
 
         // Open the date picker and reset the date to the chosen date
         openDatePicker.setOnClickListener {
@@ -121,6 +129,7 @@ class UpdateAlarmFragment: Fragment() {
         val alarmName = alarm_name_input.text.toString()
         val alarmCount = alarm_count.value
         val alarmInterval = alarm_interval_input.value
+
         // Creates the alarm DateTime object
         val alarmDateTimeView = OffsetDateTime.of(
             LocalDateTime.of(
