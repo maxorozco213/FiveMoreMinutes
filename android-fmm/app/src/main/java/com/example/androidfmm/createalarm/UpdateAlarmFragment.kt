@@ -19,6 +19,8 @@ import com.example.androidfmm.alarm.AlarmItem
 import com.example.androidfmm.data.AlarmViewModel
 import com.example.androidfmm.databinding.FragmentUpdateAlarmBinding
 import kotlinx.android.synthetic.main.fragment_create_alarm.*
+import kotlinx.android.synthetic.main.fragment_update_alarm.*
+import org.w3c.dom.Text
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
@@ -54,20 +56,29 @@ class UpdateAlarmFragment: Fragment() {
 
         mAlarmViewModel = ViewModelProvider(this).get(AlarmViewModel::class.java)
 
+        // Declare variables bound to UI elements
         val openDatePicker: ImageButton = binding.openDatePicker
         val datePickerText: TextView = binding.updateAlarmDate
-        val calendar = Calendar.getInstance()
+        val timePickerValue: TimePicker = binding.updateAlarmTimePicker
+        val selectedAlarmName: TextView = binding.updateAlarmNameInput
 
+        // Declare time and date variables
+        val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
-        // Month is returned as an ??index?? so 1 needs to be added to get the correct month number value
+            // Month is returned as an ??index?? so 1 needs to be added to get the correct month number value
         val month = calendar.get(Calendar.MONTH)+1
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
+        // Store in variables that can be used by the rest of the fragment
         alarmMonthFromObject = month-1
         alarmMonthFromObject = month
         alarmDayFromObject = day
 
-        // Set an initial date to the selected alarm item's current date
+        // Set an initial values from selected item
+        timePickerValue.hour = args.currentAlarm.alarmDateTime.toLocalTime().hour
+        timePickerValue.minute = args.currentAlarm.alarmDateTime.toLocalTime().minute
+        selectedAlarmName.text = args.currentAlarm.alarmName
+
         val currentDate = args.currentAlarm.alarmDateTime.toLocalDate()
             .plusMonths(1).plusYears(2020)
             .format(DateTimeFormatter.ofPattern("M/dd/yyyy"))
@@ -126,29 +137,29 @@ class UpdateAlarmFragment: Fragment() {
     }
 
     private fun updateAlarm() {
-        val alarmName = alarm_name_input.text.toString()
-        val alarmCount = alarm_count.value
-        val alarmInterval = alarm_interval_input.value
-
+        val alarmName = update_alarm_name_input.text.toString()
+        val alarmCount = update_alarm_count.value
+        val alarmInterval = update_alarm_interval_input.value
+        val alarmID = args.currentAlarm.id
         // Creates the alarm DateTime object
         val alarmDateTimeView = OffsetDateTime.of(
             LocalDateTime.of(
                 alarmYearFromObject,
                 alarmMonthFromObject-1,
                 alarmDayFromObject,
-                alarm_time_picker.hour,
-                alarm_time_picker.minute
+                update_alarm_time_picker.hour,
+                update_alarm_time_picker.minute
             ),
             ZoneOffset.ofHoursMinutes(6, 30)
         )
 
         if (inputCheck(alarmName)) {
-            val alarmItem = AlarmItem(0, alarmName, alarmDateTimeView, alarmCount, alarmInterval)
+            val alarmItem = AlarmItem(alarmID, alarmName, alarmDateTimeView, alarmCount, alarmInterval)
 
-            mAlarmViewModel.addAlarm(alarmItem)
+            mAlarmViewModel.updateAlarm(alarmItem)
             Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.alarmListFragment)
             view?.hideKeyboard()
-            Toast.makeText(requireContext(), "New Alarm Group Created", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Alarm group updated", Toast.LENGTH_LONG).show()
         } else if (!inputCheck(alarmName)) {
             Toast.makeText(requireContext(), "20 character limit for alarm name", Toast.LENGTH_LONG).show()
         } else {

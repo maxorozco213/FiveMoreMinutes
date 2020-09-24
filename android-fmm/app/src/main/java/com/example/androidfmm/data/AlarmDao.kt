@@ -1,10 +1,7 @@
 package com.example.androidfmm.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.example.androidfmm.alarm.AlarmItem
 
 @Dao
@@ -17,4 +14,7 @@ interface AlarmDao {
 
     @Delete
     fun delete(alarm: AlarmItem)
+
+    @Update
+    suspend fun updateAlarm(alarm: AlarmItem)
 }
