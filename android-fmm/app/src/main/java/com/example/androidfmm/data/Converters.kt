@@ -17,7 +17,7 @@ object Converters {
 
     @TypeConverter
     @JvmStatic
-    fun fromLongToDate(dateTime: OffsetDateTime?): String? {
+    fun fromStringToDate(dateTime: OffsetDateTime?): String? {
         return dateTime?.format(formatter)
     }
 }

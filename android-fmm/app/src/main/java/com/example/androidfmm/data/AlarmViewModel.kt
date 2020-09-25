@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AlarmViewModel(application: Application): AndroidViewModel(application){
-    private val readAllData: LiveData<List<AlarmItem>>
+    val readAllData: LiveData<List<AlarmItem>>
     private val repository: AlarmRepository
 
     init {
@@ -21,6 +21,24 @@ class AlarmViewModel(application: Application): AndroidViewModel(application){
     fun addAlarm(alarmItem: AlarmItem){
         viewModelScope.launch(Dispatchers.IO){
             repository.addAlarm(alarmItem)
+        }
+    }
+
+    fun updateAlarm(alarmItem: AlarmItem) {
+        viewModelScope.launch(Dispatchers.IO){
+            repository.updateAlarm(alarmItem)
+        }
+    }
+
+    fun deleteAlarm(alarmItem: AlarmItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteAlarm(alarmItem)
+        }
+    }
+
+    fun deleteAllAlarms() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteAllAlarms()
         }
     }
 }
