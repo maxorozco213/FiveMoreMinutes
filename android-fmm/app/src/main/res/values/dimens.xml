@@ -5,4 +5,7 @@
     <dimen name="default_elem_width">375dp</dimen>
     <dimen name="rounded_corners">8dp</dimen>
     <dimen name="settings_linear_layout">70dp</dimen>
+
+<!--    Alarm item-->
+    <dimen name="default_time_size">30sp</dimen>
 </resources>

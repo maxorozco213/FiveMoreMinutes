@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alarm_list_item"
     android:layout_width="match_parent"
-    android:layout_height="125dp"
+    android:layout_height="130dp"
     android:layout_margin="4dp"
-    android:background="?attr/selectableItemBackground">
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="?attr/selectableItemBackground"
+    app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/alarmSwitch"
+            android:id="@+id/alarm_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -22,43 +27,60 @@
             app:layout_constraintVertical_bias="0.506" />
 
         <TextView
-            android:id="@+id/alarmTime"
+            android:id="@+id/alarm_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAlignment="viewStart"
             android:textColor="@color/defaultTextColor"
+            android:textSize="@dimen/default_time_size"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/alarmSwitch"
-            app:layout_constraintHorizontal_bias="0.111"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.076"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.200" />
+            app:layout_constraintVertical_bias="0.266" />
 
         <TextView
-            android:id="@+id/alarm_date"
+            android:id="@+id/alarm_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="173dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="173dp"
+            android:layout_marginBottom="111dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/alarm_schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
             android:textColor="@color/defaultTextColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.084"
+            app:layout_constraintHorizontal_bias="0.076"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/alarmTime"
-            app:layout_constraintVertical_bias="0.292" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.576" />
 
         <TextView
-            android:id="@+id/dayOfWeek"
+            android:id="@+id/alarm_interval"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="3dp"
+            android:layout_marginStart="3dp"
+            android:textAlignment="textStart"
             android:textColor="@color/defaultTextColor"
-            app:layout_constraintBottom_toTopOf="@+id/alarm_date"
-            app:layout_constraintEnd_toStartOf="@+id/alarmSwitch"
-            app:layout_constraintHorizontal_bias="0.111"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.076"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/alarmTime"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.747" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
