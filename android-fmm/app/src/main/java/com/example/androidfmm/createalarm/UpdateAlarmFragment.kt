@@ -1,5 +1,6 @@
 package com.example.androidfmm.createalarm
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
@@ -107,21 +108,30 @@ class UpdateAlarmFragment: Fragment() {
         return binding.root
     }
 
+    // Inflate the menu options
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
-        menuInflater.inflate(R.menu.actionbar_save, menu)
+        menuInflater.inflate(R.menu.actionbar_update, menu)
         super.onCreateOptionsMenu(menu, menuInflater)
     }
 
     // Determines the ID of the option that was clicked
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-        R.id.save_button -> {
+        R.id.update_save_button -> {
             updateAlarm()
             Log.i("MENU", "SAVE BUTTON")
             true
         }
+        // Not sure what this is
         R.id.nav_host_fragment -> {
             NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
                     || super.onOptionsItemSelected(item)
+            Log.i("NAVHOST", "HUH")
+            true
+        }
+        // Deletes the current alarm from the editing page
+        R.id.update_delete_button -> {
+            // Delete the current alarm and navigate back to the list view
+            deleteAlarm()
             true
         }
         else -> {
@@ -137,11 +147,12 @@ class UpdateAlarmFragment: Fragment() {
     }
 
     private fun updateAlarm() {
+        val alarmID = args.currentAlarm.id
         val alarmName = update_alarm_name_input.text.toString()
         val alarmCount = update_alarm_count.value
         val alarmInterval = update_alarm_interval_input.value
-        val alarmID = args.currentAlarm.id
         // Creates the alarm DateTime object
+        // I don't really understand OffsetDateTime completely...
         val alarmDateTimeView = OffsetDateTime.of(
             LocalDateTime.of(
                 alarmYearFromObject,
@@ -154,6 +165,7 @@ class UpdateAlarmFragment: Fragment() {
         )
 
         if (inputCheck(alarmName)) {
+            // Obviously have to include the specific ID in an update
             val alarmItem = AlarmItem(alarmID, alarmName, alarmDateTimeView, alarmCount, alarmInterval)
 
             mAlarmViewModel.updateAlarm(alarmItem)
@@ -165,6 +177,19 @@ class UpdateAlarmFragment: Fragment() {
         } else {
             Toast.makeText(requireContext(), "There was an error creating the alarm", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun deleteAlarm() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("CONFIRM") { _, _ ->
+            mAlarmViewModel.deleteAlarm(args.currentAlarm)
+            Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.alarmListFragment)
+            Toast.makeText(requireContext(), "Alarm deleted", Toast.LENGTH_LONG).show()
+        }
+        builder.setNegativeButton("NO") { _, _ -> }
+        builder.setTitle(args.currentAlarm.alarmName)
+        builder.setMessage("Are you sure you want to delete this alarm?")
+        builder.create().show()
     }
 
     private fun inputCheck(alarmName: String): Boolean {

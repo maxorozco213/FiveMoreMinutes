@@ -10,10 +10,13 @@ interface AlarmDao {
     fun getAllAlarms(): LiveData<List<AlarmItem>>
 
     @Insert
-    fun addAlarm(vararg alarm: AlarmItem)
+    suspend fun addAlarm(vararg alarm: AlarmItem)
 
     @Delete
-    fun delete(alarm: AlarmItem)
+    suspend fun deleteAlarm(alarm: AlarmItem)
+
+    @Query("DELETE FROM alarm_table")
+    suspend fun deleteAllAlarms()
 
     @Update
     suspend fun updateAlarm(alarm: AlarmItem)

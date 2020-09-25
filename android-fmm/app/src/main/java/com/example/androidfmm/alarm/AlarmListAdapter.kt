@@ -1,25 +1,14 @@
 package com.example.androidfmm.alarm
 
-import android.os.Bundle
-import android.text.Layout
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.NumberPicker
-import android.widget.TextView
-import androidx.fragment.app.ListFragment
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidfmm.R
-import com.example.androidfmm.createalarm.UpdateAlarmFragment
-import com.example.androidfmm.data.AlarmViewModel
 import kotlinx.android.synthetic.main.alarm_list_item.view.*
-import kotlinx.android.synthetic.main.fragment_create_alarm.view.*
-import org.w3c.dom.Text
-import java.time.LocalDateTime
-import java.time.OffsetDateTime
-import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
 // Adapter for the alarm item, gives data to the UI
@@ -44,6 +33,7 @@ class AlarmListAdapter(): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>
     override fun onBindViewHolder(holder: AlarmViewHolder, position: Int) {
         val currentItem = alarmList[position]
         val interval = currentItem.alarmInterval.toString()
+
         holder.itemView.alarm_name.text = currentItem.alarmName
         // Get main time display for list items
         holder.itemView.alarm_time.text = currentItem.alarmDateTime.toLocalTime()
@@ -59,6 +49,11 @@ class AlarmListAdapter(): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>
         holder.itemView.alarm_list_item.setOnClickListener {
             val action = AlarmListFragmentDirections.actionAlarmListFragmentToUpdateAlarmFragment(currentItem)
             holder.itemView.findNavController().navigate(action)
+        }
+
+        holder.itemView.alarm_list_item.setOnLongClickListener {
+            Log.i("LONG", "PRESS")
+            return@setOnLongClickListener true
         }
     }
 
