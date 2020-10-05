@@ -30,9 +30,13 @@ class AlarmListFragment : Fragment() {
 //            inflater, R.layout.fragment_alarm_list, container, false)
 //        binding.alarmList = this
         val view = inflater.inflate(R.layout.fragment_alarm_list, container, false)
+        mAlarmViewModel = ViewModelProvider(this).get(AlarmViewModel::class.java)
 
-        val adapter = AlarmListAdapter(context, object:AlarmListAdapter.ItemSelectedListener {
+        val adapter = AlarmListAdapter(object:AlarmListAdapter.ItemSelectedListener {
             override fun onItemSelected(item:Any) {
+                val alarm = item as AlarmItem
+                alarm.isActive = !alarm.isActive
+                mAlarmViewModel.updateAlarm(alarm)
                 Log.i("DATA", "DATABASE EDIT")
             }
         })
@@ -42,7 +46,6 @@ class AlarmListFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        mAlarmViewModel = ViewModelProvider(this).get(AlarmViewModel::class.java)
         mAlarmViewModel.readAllData.observe(viewLifecycleOwner, Observer { alarm ->
             adapter.setData(alarm)
         })

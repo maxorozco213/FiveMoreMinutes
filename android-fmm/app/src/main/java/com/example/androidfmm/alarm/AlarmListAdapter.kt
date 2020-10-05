@@ -12,13 +12,13 @@ import kotlinx.android.synthetic.main.alarm_list_item.view.*
 import java.time.format.DateTimeFormatter
 
 // Adapter for the alarm item, gives data to the UI
-class AlarmListAdapter(context: Context?, private var itemSelectedListener: ItemSelectedListener): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>() {
+class AlarmListAdapter(private var itemSelectedListener: ItemSelectedListener): RecyclerView.Adapter<AlarmListAdapter.AlarmViewHolder>() {
     private var alarmList = emptyList<AlarmItem>()
 
     interface ItemSelectedListener {
         fun onItemSelected(item:Any)
     }
-    
+
     inner class AlarmViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         init {
             itemView.alarm_switch.setOnClickListener { itemSelectedListener.onItemSelected(alarmList[adapterPosition]) }
