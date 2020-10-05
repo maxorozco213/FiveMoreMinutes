@@ -7,12 +7,13 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.androidfmm.alarm.AlarmItem
 
-@Database(entities = [AlarmItem::class], version = 2, exportSchema = false)
+@Database(entities = [AlarmItem::class], version = 3, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun alarmDao(): AlarmDao
 
     /*
+        TODO
         Add migration calls here when going to production.
         Remove call to '.fallbackToDestructiveMigration()' to prevent user data from
         being deleted on an app update

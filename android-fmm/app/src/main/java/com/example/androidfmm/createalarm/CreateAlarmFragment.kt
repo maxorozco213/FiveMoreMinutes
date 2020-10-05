@@ -56,8 +56,8 @@ class CreateAlarmFragment: Fragment() {
 
         val openDatePicker: ImageButton = binding.openDatePicker
         val datePickerText: TextView = binding.alarmDate
-        val calendar = Calendar.getInstance()
 
+        val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         // Month is returned as an ??index?? so 1 needs to be added to get the correct month number value
         val month = calendar.get(Calendar.MONTH)+1
@@ -126,6 +126,7 @@ class CreateAlarmFragment: Fragment() {
         val alarmName = alarm_name_input.text.toString()
         val alarmCount = alarm_count.value
         val alarmInterval = alarm_interval_input.value
+        val isActive = true
         // Creates the alarm DateTime object
         val alarmDateTimeView = OffsetDateTime.of(
             LocalDateTime.of(
@@ -139,7 +140,7 @@ class CreateAlarmFragment: Fragment() {
         )
 
         if (inputCheck(alarmName)) {
-            val alarmItem = AlarmItem(0, alarmName, alarmDateTimeView, alarmCount, alarmInterval)
+            val alarmItem = AlarmItem(0, alarmName, alarmDateTimeView, alarmCount, alarmInterval, isActive)
 
             mAlarmViewModel.addAlarm(alarmItem)
             Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.alarmListFragment)

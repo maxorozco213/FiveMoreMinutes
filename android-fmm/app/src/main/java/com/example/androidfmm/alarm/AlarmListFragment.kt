@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidfmm.R
 import com.example.androidfmm.data.AlarmViewModel
-import com.example.androidfmm.databinding.FragmentAlarmListBinding
 import kotlinx.android.synthetic.main.fragment_alarm_list.*
 import kotlinx.android.synthetic.main.fragment_alarm_list.view.*
 
@@ -33,8 +31,14 @@ class AlarmListFragment : Fragment() {
 //        binding.alarmList = this
         val view = inflater.inflate(R.layout.fragment_alarm_list, container, false)
 
-        val adapter = AlarmListAdapter()
+        val adapter = AlarmListAdapter(context, object:AlarmListAdapter.ItemSelectedListener {
+            override fun onItemSelected(item:Any) {
+                Log.i("DATA", "DATABASE EDIT")
+            }
+        })
+
         val recyclerView = view.alarm_list_fragment
+
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 

@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -17,11 +18,10 @@ import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import com.example.androidfmm.R
 import com.example.androidfmm.alarm.AlarmItem
+import com.example.androidfmm.alarm.AlarmListAdapter
 import com.example.androidfmm.data.AlarmViewModel
 import com.example.androidfmm.databinding.FragmentUpdateAlarmBinding
-import kotlinx.android.synthetic.main.fragment_create_alarm.*
 import kotlinx.android.synthetic.main.fragment_update_alarm.*
-import org.w3c.dom.Text
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
@@ -151,6 +151,7 @@ class UpdateAlarmFragment: Fragment() {
         val alarmName = update_alarm_name_input.text.toString()
         val alarmCount = update_alarm_count.value
         val alarmInterval = update_alarm_interval_input.value
+        val isActive = true
         // Creates the alarm DateTime object
         // I don't really understand OffsetDateTime completely...
         val alarmDateTimeView = OffsetDateTime.of(
@@ -166,7 +167,7 @@ class UpdateAlarmFragment: Fragment() {
 
         if (inputCheck(alarmName)) {
             // Obviously have to include the specific ID in an update
-            val alarmItem = AlarmItem(alarmID, alarmName, alarmDateTimeView, alarmCount, alarmInterval)
+            val alarmItem = AlarmItem(alarmID, alarmName, alarmDateTimeView, alarmCount, alarmInterval, isActive)
 
             mAlarmViewModel.updateAlarm(alarmItem)
             Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.alarmListFragment)
@@ -196,6 +197,7 @@ class UpdateAlarmFragment: Fragment() {
         if (alarmName.length > 20) {
             return false
         }
+
         return true
     }
 }

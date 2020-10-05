@@ -15,7 +15,8 @@ data class AlarmItem(
     val alarmName: String,
     val alarmDateTime: OffsetDateTime,
     val alarmCount: Int,
-    val alarmInterval: Int
+    val alarmInterval: Int,
+    var isActive: Boolean
 ): Parcelable
 
 //data class AlarmItem(val testText: String)
