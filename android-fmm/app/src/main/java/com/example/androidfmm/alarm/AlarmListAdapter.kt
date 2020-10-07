@@ -48,11 +48,6 @@ class AlarmListAdapter(private var itemSelectedListener: ItemSelectedListener): 
         holder.itemView.alarm_interval.text = if (interval != "0") interval else "Single alarm"
         holder.itemView.alarm_switch.isChecked = currentItem.isActive
 
-        // Set the new bool to
-        holder.itemView.alarm_switch.setOnCheckedChangeListener { _, _ ->
-            Log.i("ACTIVE", currentItem.isActive.toString())
-        }
-
         // Navigate and send alarm object to Update Fragment
         holder.itemView.alarm_list_item.setOnClickListener {
             val action = AlarmListFragmentDirections.actionAlarmListFragmentToUpdateAlarmFragment(currentItem)

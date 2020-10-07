@@ -34,10 +34,12 @@ class AlarmListFragment : Fragment() {
 
         val adapter = AlarmListAdapter(object:AlarmListAdapter.ItemSelectedListener {
             override fun onItemSelected(item:Any) {
+                // Cast the item of type Any to an AlarmItem
                 val alarm = item as AlarmItem
+                // Toggle the boolean and call update on the item
                 alarm.isActive = !alarm.isActive
                 mAlarmViewModel.updateAlarm(alarm)
-                Log.i("DATA", "DATABASE EDIT")
+                Log.i("DATA", "isActive set to ${alarm.isActive}")
             }
         })
 

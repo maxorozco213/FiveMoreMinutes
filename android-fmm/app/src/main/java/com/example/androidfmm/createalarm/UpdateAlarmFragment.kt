@@ -147,6 +147,7 @@ class UpdateAlarmFragment: Fragment() {
     }
 
     private fun updateAlarm() {
+        val alarmArray = emptyList<AlarmItem>()
         val alarmID = args.currentAlarm.id
         val alarmName = update_alarm_name_input.text.toString()
         val alarmCount = update_alarm_count.value
@@ -167,7 +168,7 @@ class UpdateAlarmFragment: Fragment() {
 
         if (inputCheck(alarmName)) {
             // Obviously have to include the specific ID in an update
-            val alarmItem = AlarmItem(alarmID, alarmName, alarmDateTimeView, alarmCount, alarmInterval, isActive)
+            val alarmItem = AlarmItem(alarmID, alarmName, alarmDateTimeView, alarmCount, alarmInterval, isActive, alarmArray)
 
             mAlarmViewModel.updateAlarm(alarmItem)
             Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.alarmListFragment)

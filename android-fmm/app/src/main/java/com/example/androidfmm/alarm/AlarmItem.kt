@@ -1,6 +1,7 @@
 package com.example.androidfmm.alarm
 
 import android.os.Parcelable
+import androidx.annotation.Nullable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
@@ -16,7 +17,8 @@ data class AlarmItem(
     val alarmDateTime: OffsetDateTime,
     val alarmCount: Int,
     val alarmInterval: Int,
-    var isActive: Boolean
+    var isActive: Boolean,
+    val alarmGroup: List<AlarmItem>?
 ): Parcelable
 
 //data class AlarmItem(val testText: String)

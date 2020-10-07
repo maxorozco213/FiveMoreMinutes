@@ -123,6 +123,7 @@ class CreateAlarmFragment: Fragment() {
     }
 
     private fun insertNewAlarmToDatabase() {
+        val alarmArray = emptyList<AlarmItem>()
         val alarmName = alarm_name_input.text.toString()
         val alarmCount = alarm_count.value
         val alarmInterval = alarm_interval_input.value
@@ -139,8 +140,12 @@ class CreateAlarmFragment: Fragment() {
             ZoneOffset.ofHoursMinutes(6, 30)
         )
 
+        if (alarmCount > 1) {
+            
+        }
+
         if (inputCheck(alarmName)) {
-            val alarmItem = AlarmItem(0, alarmName, alarmDateTimeView, alarmCount, alarmInterval, isActive)
+            val alarmItem = AlarmItem(0, alarmName, alarmDateTimeView, alarmCount, alarmInterval, isActive, alarmArray)
 
             mAlarmViewModel.addAlarm(alarmItem)
             Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.alarmListFragment)
